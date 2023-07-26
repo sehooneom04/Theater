@@ -6,7 +6,7 @@ class User {
     private String name;
     private String phoneNum;
     private long studentId;
-    private ArrayList<String> friendList = new ArrayList<String>();
+    private ArrayList<User> friendList = new ArrayList<User>();
 
     private String address;
 
@@ -69,19 +69,19 @@ class User {
     }     // 정보 변경 메소드들.
 
     public void addFriend(User friend) {
-        friend.friendList.add(name);
-        this.friendList.add(friend.name);
+        this.friendList.add(friend);
+        friend.friendList.add(this);
     } //친구 추가 메소드
 
     public void delFriend(User friend) {
-        for (int i = 0; i < friend.friendList.size(); i++) {
-            if (friend.friendList.get(i) == name) {
-                friend.friendList.remove(i);
+        for (int i = 0; i < friendList.size(); i++) {
+            if(friend.getName().equals(friendList.get(i).getName())){
+                friendList.remove(i);
             }
         }
         for (int i = 0; i < friendList.size(); i++) {
-            if (friend.name == friendList.get(i)) {
-                friendList.remove(i);
+            if(friend.friendList.get(i).getName().equals(name)){
+                friend.friendList.remove(i);
             }
         }
     } // 친구 삭제 메소드
