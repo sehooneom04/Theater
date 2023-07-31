@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 class User {
-    private int row;
-    private String line;
+    private Seat seatInfo;
     private String name;
     private String phoneNum;
     private long studentId;
@@ -10,9 +9,7 @@ class User {
 
     private String address;
 
-    public String toString(){
-        return line + " " + row;
-    }
+
     public User(String name, String phoneNum) {
         this.name = name;
         this.phoneNum = phoneNum;
@@ -26,18 +23,7 @@ class User {
         this.studentId = studentId;
         this.address = address;
     }
-    public void setLine(String line){
-        this.line = line;
-    }
-    public void setRow(int row){
-        this.row = row;
-    }
-    public String getLine(){
-        return line;
-    }
-    public int getRow(){
-        return row;
-    }
+
     public String getName(){
         return name;
     }
@@ -67,6 +53,14 @@ class User {
     public void changeAddress(String address) {
         this.address = address;
     }     // 정보 변경 메소드들.
+    public void saveSeatInfo(Seat seatInfo , String line, int row){
+        this.seatInfo = seatInfo;
+        this.seatInfo.setRow(row);
+        this.seatInfo.setLine(line);
+    }
+    public Seat getSeatInfo(){
+        return seatInfo;
+    }
 
     public void addFriend(User friend) {
         this.friendList.add(friend);

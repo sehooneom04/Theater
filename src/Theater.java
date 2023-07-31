@@ -93,9 +93,9 @@ class Theater {
         int row = s1.nextInt();
         if(s[exchangeEngToNum(line)][row-1].getCheck() == 0) {
             s[exchangeEngToNum(line)][row-1].setCheck(1);
+            forSave.saveSeatInfo(s[exchangeEngToNum(line)][row-1],line,row);
+
             System.out.println("예약이 완료되었습니다.");
-            forSave.setRow(row);
-            forSave.setLine(line);
         }
         else{
             System.out.println("이미 예약된 좌석입니다.");
@@ -122,8 +122,8 @@ class Theater {
                         if (answer.equals("y")) {
                             System.out.print("학번을 입력하시오>>");
                             studentId = s1.nextInt();
-                            System.out.print("주소를 띄어쓰기 대신 /로 입력하시오(ex.경기도/성남시/분당구/~~)>>");//여기 질문하기(다른 방법)
-                            address = s1.next();
+                            System.out.print("주소를 입력하시오>>");
+                            address = s1.nextLine();
                             users.add(users.size(), new User(name, phoneNum, studentId, address));
                             break;
                         }
@@ -191,7 +191,7 @@ class Theater {
     public void chkSeat(){
         User forSave;
         forSave = logIn();
-        if(forSave.getRow() == 0){
+        if(forSave.getSeatInfo().getRow() == 0){
             System.out.println("좌석을 예약하지 않았습니다.");
         }
         else{
@@ -204,8 +204,8 @@ class Theater {
         int stringToInt;
         forSave = logIn();
         System.out.println("현재 좌석은"+ forSave.toString()+" 입니다.");
-        stringToInt = Integer.parseInt(forSave.getLine());
-        s[stringToInt][(forSave.getRow()-1)].setCheck(0);
+        stringToInt = Integer.parseInt(forSave.getSeatInfo().getLine());
+        s[stringToInt][(forSave.getSeatInfo().getRow()-1)].setCheck(0);
         System.out.println("자리를 예약이 취소되었습니다.");
     }
 }
