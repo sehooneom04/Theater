@@ -21,8 +21,6 @@ class Theater {
         System.out.println("4.좌석 번호 확인");
         System.out.println("5.예약 취소");
         System.out.println("6.자기 정보 확인");
-       /* System.out.println("7.친구 추가"); //이거 만들기
-        System.out.println("8.친구 좌석 확인"); //이거 만들기 */
         System.out.println("7.종료");
         System.out.println("--------------------------");
         System.out.print("메뉴를 선택하세요>>");
@@ -91,8 +89,8 @@ class Theater {
         System.out.print("예약하고자 하는 좌석을 선택하시오(A,B,C열의 1~5번 좌석)[ex) A 3]>>");
         String line = s1.next();
         int row = s1.nextInt();
-        if(s[exchangeEngToNum(line)][row-1].getCheck() == 0) {
-            s[exchangeEngToNum(line)][row-1].setCheck(1);
+        if(s[exchangeEngToNum(line)][row-1].getCheck() == false) {
+            s[exchangeEngToNum(line)][row-1].setCheck(true);
             forSave.saveSeatInfo(s[exchangeEngToNum(line)][row-1],line,row);
 
             System.out.println("예약이 완료되었습니다.");
@@ -170,7 +168,7 @@ class Theater {
     public void printTheater(){
         for(int i = 0;i<3;i++){
             for(int j = 0;j<5;j++){
-                if(s[i][j].getCheck() == 0){
+                if(s[i][j].getCheck() == false){
                     System.out.print("-");
                 }
                 else {
@@ -205,7 +203,8 @@ class Theater {
         forSave = logIn();
         System.out.println("현재 좌석은"+ forSave.toString()+" 입니다.");
         stringToInt = Integer.parseInt(forSave.getSeatInfo().getLine());
-        s[stringToInt][(forSave.getSeatInfo().getRow()-1)].setCheck(0);
+        s[stringToInt][(forSave.getSeatInfo().getRow()-1)].setCheck(false);
+        forSave.setSeatInfo(null);
         System.out.println("자리를 예약이 취소되었습니다.");
     }
 }

@@ -1,5 +1,5 @@
 class Seat{
-    private int check;
+    private boolean check;
 
     private int row;
     private String line;
@@ -19,12 +19,12 @@ class Seat{
         return row;
     }
     public Seat(){
-        this.check = 0;
+        this.check = false;
     }
-    public void setCheck(int check){
+    public void setCheck(boolean check){
         this.check = check;
     }
-    public int getCheck(){
+    public boolean getCheck(){
         return check;
     }
 }

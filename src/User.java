@@ -58,6 +58,9 @@ class User {
         this.seatInfo.setRow(row);
         this.seatInfo.setLine(line);
     }
+    public void setSeatInfo(Seat seatInfo){
+        this.seatInfo = seatInfo;
+    }
     public Seat getSeatInfo(){
         return seatInfo;
     }
