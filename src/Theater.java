@@ -136,10 +136,11 @@ class Theater {
                 System.out.print("주소와 학번을 등록하시겠습니까?(y/n)>>");
                 answer = s1.next();
                 if (answer.equals("y")) {
+                    System.out.println("주소를 입력하시오.");
+                    s1.nextLine();
+                    address = s1.nextLine();
                     System.out.print("학번을 입력하시오>>");
                     studentId = s1.nextInt();
-                    System.out.print("주소를 띄어쓰기 대신 /로 입력하시오(ex.경기도/성남시/분당구/~~)>>");//여기 질문하기(다른 방법)
-                    address = s1.next();
                     users.add(users.size(), new User(name, phoneNum, studentId, address));
                     break;
                 } else {
@@ -168,11 +169,11 @@ class Theater {
     public void printTheater(){
         for(int i = 0;i<3;i++){
             for(int j = 0;j<5;j++){
-                if(s[i][j].getCheck() == false){
-                    System.out.print("-");
+                if(s[i][j].getCheck() == true){
+                    System.out.print("*");
                 }
                 else {
-                    System.out.print("*");
+                    System.out.print("-");
                 }
             }
             if(i == 0) {
@@ -189,22 +190,21 @@ class Theater {
     public void chkSeat(){
         User forSave;
         forSave = logIn();
-        if(forSave.getSeatInfo().getRow() == 0){
+        if(forSave.getSeatInfo().getCheck() == false){
             System.out.println("좌석을 예약하지 않았습니다.");
         }
         else{
-            System.out.println("좌석은 " + forSave.toString() + "입니다.");
+            System.out.println("좌석은 " + forSave.getSeatInfo().getLine() +"열 " + forSave.getSeatInfo().getRow() + "번입니다.");
         }
 
     }
     public void delSeat(){
         User forSave;
-        int stringToInt;
         forSave = logIn();
-        System.out.println("현재 좌석은"+ forSave.toString()+" 입니다.");
-        stringToInt = Integer.parseInt(forSave.getSeatInfo().getLine());
-        s[stringToInt][(forSave.getSeatInfo().getRow()-1)].setCheck(false);
+        System.out.println("현재 좌석은 "+ forSave.getSeatInfo().getLine() + "열 " + forSave.getSeatInfo().getRow()+"번입니다.");
+        s[exchangeEngToNum(forSave.getSeatInfo().getLine())][(forSave.getSeatInfo().getRow())].setCheck(false);
         forSave.setSeatInfo(null);
         System.out.println("자리를 예약이 취소되었습니다.");
     }
+
 }

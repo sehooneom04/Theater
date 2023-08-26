@@ -2,7 +2,7 @@ class Seat{
     private boolean check;
 
     private int row;
-    private String line;
+    private String line = new String();
     public String toString(){
         return line + " " + row;
     }
