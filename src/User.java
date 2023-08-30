@@ -24,17 +24,19 @@ class User {
         this.address = address;
     }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
     public String getPhoneNum() {
         return phoneNum;
     }
-    public long getStudentId(){
+
+    public long getStudentId() {
         return studentId;
     }
-    public String getAddress(){
+
+    public String getAddress() {
         return address;
     }
 
@@ -53,15 +55,18 @@ class User {
     public void changeAddress(String address) {
         this.address = address;
     }     // 정보 변경 메소드들.
-    public void saveSeatInfo(Seat seatInfo , String line, int row){
+
+    public void saveSeatInfo(Seat seatInfo, String line, int row) {
         this.seatInfo = seatInfo;
         this.seatInfo.setRow(row);
         this.seatInfo.setLine(line);
     }
-    public void setSeatInfo(Seat seatInfo){
+
+    public void setSeatInfo(Seat seatInfo) {
         this.seatInfo = seatInfo;
     }
-    public Seat getSeatInfo(){
+
+    public Seat getSeatInfo() {
         return seatInfo;
     }
 
@@ -72,12 +77,12 @@ class User {
 
     public void delFriend(User friend) {
         for (int i = 0; i < friendList.size(); i++) {
-            if(friend.getName().equals(friendList.get(i).getName())){
+            if (friend.getName().equals(friendList.get(i).getName())) {
                 friendList.remove(i);
             }
         }
         for (int i = 0; i < friendList.size(); i++) {
-            if(friend.friendList.get(i).getName().equals(name)){
+            if (friend.friendList.get(i).getName().equals(name)) {
                 friend.friendList.remove(i);
             }
         }

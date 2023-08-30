@@ -1,30 +1,38 @@
-class Seat{
+class Seat {
     private boolean check;
 
     private int row;
     private String line = new String();
-    public String toString(){
+
+    public String toString() {
         return line + " " + row;
     }
-    public void setLine(String line){
+
+    public void setLine(String line) {
         this.line = line;
     }
-    public void setRow(int row){
+
+    public void setRow(int row) {
         this.row = row;
     }
-    public String getLine(){
+
+    public String getLine() {
         return line;
     }
-    public int getRow(){
+
+    public int getRow() {
         return row;
     }
-    public Seat(){
+
+    public Seat() {
         this.check = false;
     }
-    public void setCheck(boolean check){
+
+    public void setCheck(boolean check) {
         this.check = check;
     }
-    public boolean getCheck(){
+
+    public boolean getCheck() {
         return check;
     }
 }
